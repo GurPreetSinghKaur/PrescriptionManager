@@ -1,13 +1,12 @@
 import java.util.Scanner;
 
 public class Menu {
-boolean id;
-Manager manager = new Manager();
 
 public void start(){
+    Manager manager = new Manager();
     int choice = 0;
     int switchChoice = 0;
-//    long id = Integer.MIN_VALUE;
+
     Patient patient = new Patient();
     Scanner scanner = new Scanner(System.in);
 
@@ -54,6 +53,7 @@ public void start(){
                                 System.out.println("2 - Add prescription");
                                 System.out.println("3 - Change patient details");
                                 System.out.println("4 - Delete patient");
+                                System.out.println("5 - View prescription");
                                 System.out.println("9 - Go to previous menu");
                                 int choice2 = scanner.nextInt();
 
@@ -85,6 +85,26 @@ public void start(){
 
                                         break;
                                     case 4:   break;
+
+                                    case 5:  //View prescription
+
+                                        String template = "---------------------------------\n" +
+                                                "        PRESCRIPTION RECEIPT        \n" +
+                                                "---------------------------------\n" +
+                                                "Patient: %s\n" +
+                                                "Doctor: %s\n" +
+                                                "Date: %s\n" +
+                                                "---------------------------------\n" +
+                                                "Symptom: %s\n" +
+                                                "Quantity: %d\n" +
+                                                "Price per unit: £%.2f\n" +
+                                                "Total Amount: £%.2f\n" +
+                                                "---------------------------------\n";
+
+                                        System.out.print(manager.viewPrescription(template, patient.getId()) );
+
+
+                                        break;
                                     case 9: innerChoice = 9;
                                     break ;
                                 }
@@ -127,17 +147,8 @@ public void start(){
                             break;
                         case 3:
 
-//                            System.out.println("Enter the name of the drug:");
-//                            String drugName = scanner.next();
-//                            drug.setId(manager.selectDrug(drugName));
-//                            String stringInput = "";
-//                            while ( drug.getId() == Integer.MIN_VALUE) {
-//                                System.out.println("Drug not found, try again.");
-//                                drugName = scanner.next();
-//                                drug.setId(manager.selectDrug(drugName));
-//                            }
                             String stringInput = "";
-                             getDrugDetails(drug);
+                             getDrugDetails(drug, manager);
                                 if (drug.getId() != Integer.MIN_VALUE){
                                 System.out.println("Type in a new name or press enter to skip");
                                     stringInput = scanner.next();
@@ -167,7 +178,7 @@ public void start(){
                             break;
                         case 4: ;
                             //maybe add double confirmation before deleting a drug such as, would you like to delete this drug > Paracetamol, ID 42? press Y to confirm or N to not;
-                          if ( getDrugDetails(drug)) {
+                          if ( getDrugDetails(drug, manager)) {
                             System.out.println("Would you like to delete '" + drug.getName()+ "' with ID '" + drug.getId()+"'");
                             System.out.println("Press Y for to delete '"+drug.getName()+ "' or N to cancel ");
                             if (scanner.next().toLowerCase().equals("y")) {
@@ -198,7 +209,7 @@ public void start(){
 
 
 }
-public boolean getDrugDetails (Drug drug){
+public boolean getDrugDetails (Drug drug, Manager manager){
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the name of the drug:");
     String drugName = scanner.next();
