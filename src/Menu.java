@@ -1,8 +1,14 @@
 import java.util.Scanner;
 
-public class Menu {
+ class Menu {
+     static Menu menu = new Menu();
+private Menu (){}
 
-public void start(){
+     public static Menu getMenu() {
+         return menu;
+     }
+
+     public void start(){
     Manager manager = new Manager();
     int choice = 0;
     int switchChoice = 0;
@@ -209,7 +215,7 @@ public void start(){
 
 
 }
-public boolean getDrugDetails (Drug drug, Manager manager){
+private boolean getDrugDetails (Drug drug, Manager manager){
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the name of the drug:");
     String drugName = scanner.next();
@@ -227,7 +233,7 @@ public boolean getDrugDetails (Drug drug, Manager manager){
 return true;
 }
 
-public void getPatientDetails(Patient patient){
+private void getPatientDetails(Patient patient){
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter patient's name");
     patient.setName(scanner.next());
@@ -237,7 +243,7 @@ public void getPatientDetails(Patient patient){
     patient.setDOB(scanner.next());
 
 }
-public Symptom addSymptom (Symptom symptom){
+private Symptom addSymptom (Symptom symptom){
     Scanner scanner = new Scanner(System.in);
     System.out.println("Answer the following questions:");
     System.out.println("Patient's blood pressure. e.g. 93");
@@ -256,7 +262,7 @@ public Symptom addSymptom (Symptom symptom){
     else if (tempResponse == "n")  symptom.setPregnancy(false);
     return symptom;
 }
-    public Drug addDrug(Drug drug){
+  private Drug addDrug(Drug drug){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Answer the following questions:");
         System.out.println("Drug name");
