@@ -104,7 +104,8 @@ private Menu (){}
                                                 "Symptom: %s\n" +
                                                 "Quantity: %d\n" +
                                                 "Price per unit: £%.2f\n" +
-                                                "Total Amount: £%.2f\n" +
+                                                "Total Amount: £%.2f\n" + 
+                                                "Instructions on how to take medication: " +
                                                 "---------------------------------\n";
 
                                         System.out.print(manager.viewPrescription(template, patient.getId()) );
