@@ -45,7 +45,7 @@ public class Manager {
 Patient result = new Patient();
            String SQL_SELECT = "SELECT * FROM patient WHERE name = ? AND surname = ? AND dob = ?";
 
-//SELECT * FROM patient WHERE name= 'Raja' AND surname = 'Singh' AND dob = '01/01/02';
+ 
         App app = new App();
                 try (Connection conn = app.connect();
 
