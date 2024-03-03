@@ -86,7 +86,60 @@ private Menu (){}
                                         manager.addPrescription(prescription);
 
                                         break;
-                                    case 3:
+                                    case 3://Change patient details
+                                        //Would you like to continue with the same customer or not ?
+
+                                        String userInput = "";
+                                        patient = new Patient();
+                                        getPatientDetails(patient);
+                                        manager.selectPatient(patient);
+
+                                        if (patient.getId() != Integer.MIN_VALUE) {
+                                            System.out.println("Enter a new name of the patient or press enter to skip");
+                                            System.out.println("Type in a new name or press enter to skip");
+                                            userInput = scanner.next();
+
+                                            if(!userInput.isEmpty()) {
+
+                                                System.out.println("New name is -> " + userInput);
+
+                                                patient.setName(userInput);
+                                            } else {
+                                                System.out.println("Name skipped");
+                                            }
+
+                                            System.out.println("Type in a new value for surname or press enter to skip");
+                                            userInput = scanner.next();
+
+                                            if(userInput.isEmpty()) {
+                                                System.out.println("New surname is -> " + userInput);
+                                                patient.setSurname(scanner.next());
+                                            } else {
+                                                System.out.println("Surname skipped");
+                                            }
+
+                                            System.out.println("Type in a new value for age or press enter to skip");
+
+                                            int tempInt = scanner.nextInt();
+                                            if (tempInt == 0) {
+                                                System.out.println("New age is -> " + tempInt);
+                                            } else {
+                                                System.out.println("age skipped");
+                                            }
+
+                                            System.out.println("Type in a new value for date of birth or press enter to skip");
+                                            userInput = scanner.next();
+
+                                            if(userInput.isEmpty()) {
+                                                System.out.println("New surname is -> " + userInput);
+                                                patient.setDOB(scanner.next());
+                                            } else {
+                                                System.out.println("Date of birth skipped");
+                                            }
+
+
+
+                                        } else {System.out.println("Patient not found");}
 
 
                                         break;
@@ -146,7 +199,7 @@ private Menu (){}
 
 
                           if ( manager.addDrug(addDrug(drug)) != Integer.MIN_VALUE) {
-                              System.out.println("Succesfully added with ID number ->" + drug.getId());
+                              System.out.println("Successfully added with ID number ->" + drug.getId());
                           } else {
                               System.out.println("There was a problem adding the drug");
                           }
