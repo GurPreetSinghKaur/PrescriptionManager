@@ -1,9 +1,9 @@
 import java.util.Scanner;
-
 public final class Utility {
 private Utility(){}
 
-    public static String addString (Scanner scanner, String message){
+    public static String addString (String message){
+     Scanner scanner = new Scanner(System.in);
         System.out.println(message);
         String temp = scanner.nextLine(); //Get new input
 
@@ -14,5 +14,16 @@ private Utility(){}
 
         return temp;
     }
+    public static int addInt (String message){
+    System.out.println(message);
+    Scanner scanner = new Scanner(System.in);
 
+        while(!scanner.hasNextInt()){
+            scanner.next();
+            System.out.println("Enter numbers e.g. 1 2 3...");
+        };
+
+
+    return scanner.nextInt();
+    }
 }
