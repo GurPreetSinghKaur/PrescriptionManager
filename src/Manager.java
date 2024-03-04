@@ -250,6 +250,29 @@ Patient result = new Patient();
         return affectedRows;
     }
 
+    public int updatePatient (Patient patient) {
+//        var sql  = "UPDATE drug "
+//                + "SET name = ?, bp = ? "
+//                + "WHERE id = ?";
+        var sql = "UPDATE patient SET ";
+        if (!patient.getName().isEmpty()) {sql += "name = '" + patient.getName()+ "' ";}
+        if (patient.getSurname().isEmpty()) {sql += ", surname = " + patient.getSurname()+"' ";}
+        if (patient.getDOB().isEmpty()) {sql += ", dob = " + patient.getDOB()+"' ";}
+        if (patient.getAge() != 0) {sql += ", age = " + patient.getAge();}
+        sql += " WHERE id = ?";;
+
+        int affectedRows = 0;
+        App app = new App();
+        try (var conn  = app.connect();
+             var preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setLong(1, patient.getId());
+            affectedRows = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return affectedRows;
+    }
+
     public String viewPrescription (String template, Long id) {
         String receiptContent ="";
         boolean isNotFound = true;

@@ -90,9 +90,9 @@ private Menu (){}
                                         //Would you like to continue with the same customer or not ?
 
                                         String userInput = "";
-                                        patient = new Patient();
-                                        getPatientDetails(patient);
-                                        manager.selectPatient(patient);
+//                                        patient = new Patient();
+//                                        getPatientDetails(patient);
+//                                        manager.selectPatient(patient);
 
                                         if (patient.getId() != Integer.MIN_VALUE) {
                                             System.out.println("Enter a new name of the patient or press enter to skip");
@@ -111,7 +111,7 @@ private Menu (){}
                                             System.out.println("Type in a new value for surname or press enter to skip");
                                             userInput = scanner.next();
 
-                                            if(userInput.isEmpty()) {
+                                            if(!userInput.isEmpty()) {
                                                 System.out.println("New surname is -> " + userInput);
                                                 patient.setSurname(scanner.next());
                                             } else {
@@ -130,14 +130,14 @@ private Menu (){}
                                             System.out.println("Type in a new value for date of birth or press enter to skip");
                                             userInput = scanner.next();
 
-                                            if(userInput.isEmpty()) {
+                                            if(!userInput.isEmpty()) {
                                                 System.out.println("New surname is -> " + userInput);
-                                                patient.setDOB(scanner.next());
+//                                                patient.setDOB(scanner.next());
                                             } else {
                                                 System.out.println("Date of birth skipped");
                                             }
 
-
+                                            manager.updatePatient(patient);
 
                                         } else {System.out.println("Patient not found");}
 
