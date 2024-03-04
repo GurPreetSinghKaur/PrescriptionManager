@@ -95,9 +95,9 @@ private Menu (){}
 //                                        manager.selectPatient(patient);
 
                                         if (patient.getId() != Integer.MIN_VALUE) {
-                                            System.out.println("Enter a new name of the patient or press enter to skip");
-                                            System.out.println("Type in a new name or press enter to skip");
-                                            userInput = scanner.next();
+                                            System.out.println("Enter a new name of the patient or press 's' to skip");
+                                            scanner.next();
+                                            userInput = scanner.nextLine();
 
                                             if(!userInput.isEmpty()) {
 
@@ -113,7 +113,7 @@ private Menu (){}
 
                                             if(!userInput.isEmpty()) {
                                                 System.out.println("New surname is -> " + userInput);
-                                                patient.setSurname(scanner.next());
+                                                patient.setSurname(userInput);
                                             } else {
                                                 System.out.println("Surname skipped");
                                             }
@@ -131,8 +131,8 @@ private Menu (){}
                                             userInput = scanner.next();
 
                                             if(!userInput.isEmpty()) {
-                                                System.out.println("New surname is -> " + userInput);
-//                                                patient.setDOB(scanner.next());
+                                                System.out.println("New date of birth is -> " + userInput);
+                                                patient.setDOB(userInput);
                                             } else {
                                                 System.out.println("Date of birth skipped");
                                             }
