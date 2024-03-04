@@ -93,10 +93,10 @@ private Menu (){}
 //                                        patient = new Patient();
 //                                        getPatientDetails(patient);
 //                                        manager.selectPatient(patient);
-                                        Utility utility = new Utility();
+
 
                                         if (patient.getId() != Integer.MIN_VALUE) {
-                                            userInput =  utility.addString(scanner,"Enter a new name of the patient or press 's' to skip");
+                                            userInput =  Utility.addString(scanner,"Enter a new name of the patient or press 's' to skip");
 
                                             if(!userInput.isEmpty()) {
 

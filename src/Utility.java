@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
-public class Utility {
+public final class Utility {
+private Utility(){}
 
-    public String addString (Scanner scanner, String message){
+    public static String addString (Scanner scanner, String message){
         System.out.println(message);
         String temp = scanner.nextLine(); //Get new input
 
