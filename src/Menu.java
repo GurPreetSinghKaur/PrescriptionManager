@@ -90,9 +90,7 @@ private Menu (){}
                                         //Would you like to continue with the same customer or not ?
 
                                         String userInput = "";
-//                                        patient = new Patient();
-//                                        getPatientDetails(patient);
-//                                        manager.selectPatient(patient);
+//
 
                                         if (patient.getId() != Integer.MIN_VALUE) {
                                             userInput =  Utility.addString("Enter a new name of the patient or press 's' to skip");
