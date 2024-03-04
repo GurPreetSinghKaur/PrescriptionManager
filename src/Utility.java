@@ -23,7 +23,6 @@ private Utility(){}
             System.out.println("Enter numbers e.g. 1 2 3...");
         };
 
-
     return scanner.nextInt();
     }
 }
