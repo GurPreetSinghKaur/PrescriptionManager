@@ -36,6 +36,10 @@ private Utility(){}
             + "|[12][0-9]|0[1-9])/[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(date);
+
+        date = addString("");
+       if (date.isEmpty()) return "";
+
         while (!matcher.matches()) {
         date = addString("Wrong date, please make sure it follows the format dd/mm/yyyy e.g. 31/12/1999");
         matcher = pattern.matcher(date);
