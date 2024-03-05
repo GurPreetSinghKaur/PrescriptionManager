@@ -123,7 +123,7 @@ private Menu (){}
                                                 patient.setAge(Integer.MIN_VALUE);
                                             }
 
-                                            userInput = Utility.addDate("Type in a new value for date of birth or press enter to skip"); //Utility.addString("Type in a new value for date of birth or press enter to skip");
+                                            userInput = Utility.addDate("Type in a new value for date of birth or press enter to skip",true); //Utility.addString("Type in a new value for date of birth or press enter to skip");
 
                                             if(!userInput.isEmpty()) {
                                                 System.out.println("New date of birth is -> " + userInput);
@@ -271,7 +271,7 @@ return true;
 private void getPatientDetails(Patient patient){
     patient.setName(Utility.addString("Enter patient's name"));
     patient.setSurname(Utility.addString("Enter patient's surname"));
-    patient.setDOB(Utility.addDate("Enter patient's date of birth as DD/MM/YYYY"));
+    patient.setDOB(Utility.addDate("Enter patient's date of birth as DD/MM/YYYY", false));
     //    Scanner scanner = new Scanner(System.in);
 //    System.out.println("Enter patient's name");
 //    patient.setName(scanner.next());
