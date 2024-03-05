@@ -115,7 +115,7 @@ private Menu (){}
                                             }
 
                                             int tempInt = Utility.addInt("Type in a new value for age or press enter to skip");
-                                            if (tempInt == 0) {
+                                            if (tempInt != Integer.MIN_VALUE) {
                                                 System.out.println("New age is -> " + tempInt);
                                                 patient.setAge(tempInt);
                                             } else {
@@ -123,7 +123,7 @@ private Menu (){}
                                                 patient.setAge(Integer.MIN_VALUE);
                                             }
 
-                                            userInput =  Utility.addString("Type in a new value for date of birth or press enter to skip");
+                                            userInput = Utility.addDate("Type in a new value for date of birth or press enter to skip"); //Utility.addString("Type in a new value for date of birth or press enter to skip");
 
                                             if(!userInput.isEmpty()) {
                                                 System.out.println("New date of birth is -> " + userInput);

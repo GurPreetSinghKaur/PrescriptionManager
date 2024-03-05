@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public final class Utility {
 private Utility(){}
 
@@ -11,7 +14,6 @@ private Utility(){}
             System.out.println("enter detected");
         return "";
         }
-
         return temp;
     }
     public static int addInt (String message){
@@ -21,8 +23,23 @@ private Utility(){}
         while(!scanner.hasNextInt()){
             scanner.next();
             System.out.println("Enter numbers e.g. 1 2 3...");
-        };
+        }
 
-    return scanner.nextInt();
+        return scanner.nextInt();
+    }
+
+    public static String addDate(String message)
+    {
+        System.out.println(message);
+        String date = "";
+        String regex = "^(1[0-2]|0[1-9])/(3[01]"
+            + "|[12][0-9]|0[1-9])/[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
+        while (!matcher.matches()) {
+        date = addString("Wrong date, please make sure it follows the format dd/mm/yyyy e.g. 31/12/1999");
+        matcher = pattern.matcher(date);
+            }
+        return date;
     }
 }
