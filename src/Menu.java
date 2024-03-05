@@ -50,7 +50,6 @@ private Menu (){}
                     getPatientDetails(patient);
                 }
 
-
                     patient =  manager.selectPatient(patient);
                         if (patient.getId() != Integer.MIN_VALUE) {
                             int innerChoice = 0;
@@ -62,7 +61,6 @@ private Menu (){}
                                 System.out.println("5 - View prescription");
                                 System.out.println("9 - Go to previous menu");
                                 int choice2 = scanner.nextInt();
-
                                 switch (choice2) {
                                     case 1:
                                         Symptom symptom = new Symptom();
@@ -72,14 +70,11 @@ private Menu (){}
 
                                     case 2: //add prescription
                                         Prescription prescription = new Prescription();
-
-
                                         System.out.println("Enter the name of the drug:");
-                                        while ( prescription.getDrug_id() != Integer.MIN_VALUE) {
+                                        while (prescription.getDrug_id() != Integer.MIN_VALUE) {
                                             System.out.println("Drug not found, try again.");
                                             prescription.setDrug_id(manager.selectDrug(scanner.next()));
                                         }
-
                                         System.out.println("Description:");
                                         prescription.setDescription(scanner.next());
                                         prescription.setPatientId(patient.getId());
@@ -87,11 +82,8 @@ private Menu (){}
 
                                         break;
                                     case 3://Change patient details
-                                        //Would you like to continue with the same customer or not ?
 
                                         String userInput = "";
-//
-
                                         if (patient.getId() != Integer.MIN_VALUE) {
                                             userInput =  Utility.addString("Enter a new name of the patient or press 's' to skip");
 
@@ -103,8 +95,6 @@ private Menu (){}
                                             } else {
                                                 System.out.println("Name skipped");
                                             }
-
-
                                             userInput = Utility.addString("Type in a new value for surname or press enter to skip");
 
                                             if(!userInput.isEmpty()) {
@@ -113,7 +103,6 @@ private Menu (){}
                                             } else {
                                                 System.out.println("Surname skipped");
                                             }
-
                                             int tempInt = Utility.addInt("Type in a new value for age or press enter to skip");
                                             if (tempInt != Integer.MIN_VALUE) {
                                                 System.out.println("New age is -> " + tempInt);
@@ -122,9 +111,7 @@ private Menu (){}
                                                 System.out.println("age skipped");
                                                 patient.setAge(Integer.MIN_VALUE);
                                             }
-
                                             userInput = Utility.addDate("Type in a new value for date of birth or press enter to skip",true); //Utility.addString("Type in a new value for date of birth or press enter to skip");
-
                                             if(!userInput.isEmpty()) {
                                                 System.out.println("New date of birth is -> " + userInput);
                                                 patient.setDOB(userInput);
@@ -228,14 +215,10 @@ private Menu (){}
                                 System.out.println(drug.getName()+ " was not deleted");
                             }}
 
-
-
-
                         break;
                         case 9: innerChoice = 9;
                             break ;
                     }
-
 
                 }
 
