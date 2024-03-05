@@ -256,11 +256,11 @@ Patient result = new Patient();
 //                + "WHERE id = ?";
         var sql = "UPDATE patient SET ";
         if (!patient.getName().isEmpty()) {sql += "name = '" + patient.getName()+ "' ";}
-        if (patient.getSurname().isEmpty()) {sql += ", surname = " + patient.getSurname()+"' ";}
-        if (patient.getDOB().isEmpty()) {sql += ", dob = " + patient.getDOB()+"' ";}
-        if (patient.getAge() != 0) {sql += ", age = " + patient.getAge();}
+        if (!patient.getSurname().isEmpty()) {sql += ", surname = '" + patient.getSurname()+"' ";}
+        if (!patient.getDOB().isEmpty()) {sql += ", dob = '" + patient.getDOB()+"' ";}
+        if (patient.getAge() != Integer.MIN_VALUE) {sql += ", age = " + patient.getAge();}
         sql += " WHERE id = ?";;
-
+System.out.println(sql);
         int affectedRows = 0;
         App app = new App();
         try (var conn  = app.connect();

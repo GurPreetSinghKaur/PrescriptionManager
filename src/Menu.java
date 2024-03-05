@@ -114,16 +114,16 @@ private Menu (){}
                                                 System.out.println("Surname skipped");
                                             }
 
-                                            System.out.println("Type in a new value for age or press enter to skip");
-
-                                            int tempInt = scanner.nextInt();
+                                            int tempInt = Utility.addInt("Type in a new value for age or press enter to skip");
                                             if (tempInt == 0) {
                                                 System.out.println("New age is -> " + tempInt);
+                                                patient.setAge(tempInt);
                                             } else {
                                                 System.out.println("age skipped");
+                                                patient.setAge(Integer.MIN_VALUE);
                                             }
 
-                                            Utility.addString("Type in a new value for date of birth or press enter to skip");
+                                            userInput =  Utility.addString("Type in a new value for date of birth or press enter to skip");
 
                                             if(!userInput.isEmpty()) {
                                                 System.out.println("New date of birth is -> " + userInput);
