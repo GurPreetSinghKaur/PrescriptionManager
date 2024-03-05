@@ -269,13 +269,16 @@ return true;
 }
 
 private void getPatientDetails(Patient patient){
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter patient's name");
-    patient.setName(scanner.next());
-    System.out.println("Enter patient's surname");
-    patient.setSurname(scanner.next());
-    System.out.println("Enter patient's date of birth as DD/MM/YYYY");
-    patient.setDOB(scanner.next());
+    patient.setName(Utility.addString("Enter patient's name"));
+    patient.setSurname(Utility.addString("Enter patient's surname"));
+    patient.setDOB(Utility.addDate("Enter patient's date of birth as DD/MM/YYYY"));
+    //    Scanner scanner = new Scanner(System.in);
+//    System.out.println("Enter patient's name");
+//    patient.setName(scanner.next());
+//    System.out.println("Enter patient's surname");
+//    patient.setSurname(scanner.next());
+//    System.out.println("Enter patient's date of birth as DD/MM/YYYY");
+//    patient.setDOB(scanner.next());
 
 }
 private Symptom addSymptom (Symptom symptom){
