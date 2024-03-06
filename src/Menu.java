@@ -271,31 +271,26 @@ private Symptom addSymptom (Symptom symptom){
     symptom.setBp(scanner.nextInt());
     System.out.println("Flue? Y or N");
     String tempResponse = scanner.next().toLowerCase();
-    if (tempResponse == "y")  symptom.setFlue(true);
-    else if (tempResponse == "n")  symptom.setFlue(false);
+    if (tempResponse.equals("y"))  symptom.setFlue(true);
+    else if (tempResponse.equals("n"))  symptom.setFlue(false);
     System.out.println("Cold? Y or N");
     tempResponse = scanner.next().toLowerCase();
-    if (tempResponse == "y")  symptom.setCold(true);
-    else if (tempResponse == "n")  symptom.setCold(false);
+    if (tempResponse.equals("y"))  symptom.setCold(true);
+    else if (tempResponse.equals("n"))  symptom.setCold(false);
     System.out.println("Pregnant? Y or N");
     tempResponse = scanner.next().toLowerCase();
-    if (tempResponse == "y")  symptom.setPregnancy(true);
-    else if (tempResponse == "n")  symptom.setPregnancy(false);
+    if (tempResponse.equals("y"))  symptom.setPregnancy(true);
+    else if (tempResponse.equals("n"))  symptom.setPregnancy(false);
     return symptom;
 }
   private Drug addDrug(Drug drug){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Answer the following questions:");
         System.out.println("Drug name");
-
         drug.setName(scanner.next());
-
-        System.out.println("BP requirement? Minimum BP e.g. 58");
-
-        drug.setBp(scanner.nextInt());
+        drug.setBp(Utility.addInt("BP requirement? Minimum BP e.g. 58"));
  return drug;
     }
-
 
 
 }
