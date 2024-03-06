@@ -133,7 +133,7 @@ private Menu (){}
                                                 "Symptom: %s\n" +
                                                 "Quantity: %d\n" +
                                                 "Price per unit: £%.2f\n" +
-                                                "Total Amount: £%.2f\n" + 
+                                                "Total Amount: £%.2f\n" +
                                                 "Instructions on how to take medication: " +
                                                 "---------------------------------\n";
                                         System.out.print(manager.viewPrescription(template, patient.getId()) );
@@ -209,7 +209,7 @@ private Menu (){}
                           if ( getDrugDetails(drug, manager)) {
                             System.out.println("Would you like to delete '" + drug.getName()+ "' with ID '" + drug.getId()+"'");
                             System.out.println("Press Y for to delete '"+drug.getName()+ "' or N to cancel ");
-                            if (scanner.next().toLowerCase().equals("y")) {
+                            if (scanner.next().equalsIgnoreCase("y")) {
                                 manager.deleteDrug(drug);
                             } else {
                                 System.out.println(drug.getName()+ " was not deleted");
