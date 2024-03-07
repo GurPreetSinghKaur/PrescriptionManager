@@ -147,8 +147,8 @@ Patient result = new Patient();
     public long addPrescription (Prescription prescription) {
         long id = prescription.getPatientId();
 
-        String SQL = "INSERT INTO prescription (patient_id, drug_id, description)"
-                + "VALUES (?,?,?)";
+        String SQL = "INSERT INTO prescription (patient_id, drug_id, description, issue_date, expiry_date, active)"
+                + "VALUES (?,?,?,?,?,?)";
 
         App app = new App();
         try (Connection conn = app.connect();
@@ -157,6 +157,9 @@ Patient result = new Patient();
             preparedStatement.setLong(1, prescription.getPatientId());
             preparedStatement.setLong(2, prescription.getDrug_id());
             preparedStatement.setString(3, prescription.getDescription());
+            preparedStatement.setString(4,prescription.getIssue_date());
+            preparedStatement.setString(5,prescription.getExpiry_date());
+            preparedStatement.setBoolean(6,prescription.isActive());
 
             int affectedRows = preparedStatement.executeUpdate();
             // check the affected rows

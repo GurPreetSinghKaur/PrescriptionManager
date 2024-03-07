@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
  class Menu {
@@ -57,7 +58,8 @@ private Menu (){}
                                 System.out.println("4 - Delete patient");
                                 System.out.println("5 - View prescription");
                                 System.out.println("9 - Go to previous menu");
-                                int choice2 = scanner.nextInt();
+                                int choice2;
+                                choice2 = Utility.addInt("");
                                 switch (choice2) {
                                     case 1:
                                         Symptom symptom = new Symptom();
@@ -69,14 +71,21 @@ private Menu (){}
 
                                         //Need to add more examples of how to double check for the right prescription
                                         Prescription prescription = new Prescription();
-                                        System.out.println("Enter the name of the drug:");
-                                        while (prescription.getDrug_id() != Integer.MIN_VALUE) {
-                                            System.out.println("Drug not found, try again.");
-                                            prescription.setDrug_id(manager.selectDrug(scanner.next()));
-                                        }
-                                        //Set current date
+                                        Drug drug = new Drug();
+                                        getDrugDetails(drug, manager);
+
+//                                        System.out.println("Enter the name of the drug:");
+//                                        while (prescription.getDrug_id() != Integer.MIN_VALUE) {
+//                                            System.out.println("Drug not found, try again.");
+//                                            prescription.setDrug_id(manager.selectDrug(scanner.next()));
+//                                        }
+                                        prescription.setDrug_id(drug.getId());
+                                        //Format date & Set current date
                                         LocalDate date = LocalDate.now();
-                                        prescription.setIssue_date(date.toString());
+                                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                                        String formattedDate = date.format(formatter);
+                                        prescription.setIssue_date(formattedDate);
+
                                         prescription.setExpiry_date(Utility.addDate("Provide an expiry date or press enter to skip it", true));
                                         System.out.println("Description:");
                                         prescription.setDescription(scanner.next());
