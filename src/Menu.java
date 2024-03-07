@@ -296,6 +296,8 @@ private Symptom addSymptom (Symptom symptom){
         drug.setMinimum_weight(Utility.addInt("Minimum recommended patient weight. Otherwise type in 0"));
         System.out.println("Suitable for pregnant patient? Type in 'Y' or 'N'");
         drug.setPregnancy(!scanner.next().equalsIgnoreCase("y"));
+        System.out.println("Suitable for patient with heart problems ? Type in 'Y' or 'N'");
+        drug.setHeart(!scanner.next().equalsIgnoreCase("y"));
 
       return drug;
     }

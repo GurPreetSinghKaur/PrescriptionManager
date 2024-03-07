@@ -177,8 +177,8 @@ Patient result = new Patient();
     }
 
     public long addDrug (Drug drug) {
-        String sql = "INSERT INTO drug (kidney, liver, pregnancy, name, bp, minimum_age, alcohol_units, minimum_weight) "
-        + "VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO drug (kidney, liver, pregnancy, name, bp, minimum_age, alcohol_units, minimum_weight, heart) "
+        + "VALUES (?,?,?,?,?,?,?,?,?)";
 
         App app = new App();
         try (Connection conn = app.connect();
@@ -187,6 +187,7 @@ Patient result = new Patient();
             preparedStatement.setBoolean(1, drug.isKidney());
             preparedStatement.setBoolean(2, drug.isLiver());
             preparedStatement.setBoolean(3, drug.isPregnancy());
+            preparedStatement.setBoolean(9, drug.isHeart());
             preparedStatement.setString(4, drug.getName());
             preparedStatement.setInt(5, drug.getBp());
             preparedStatement.setInt(6, drug.getMinimum_age());

@@ -5,6 +5,15 @@ public class Drug {
     boolean kidney;
     boolean liver;
     boolean pregnancy;
+    boolean heart;
+
+    public boolean isHeart() {
+        return heart;
+    }
+
+    public void setHeart(boolean heart) {
+        this.heart = heart;
+    }
 
     public boolean isPregnancy() {
         return pregnancy;
