@@ -3,8 +3,35 @@ public class Prescription {
     long patientId;
     long drug_id;
     String description;
+    String issue_date;
+    String expiry_date;
+    boolean active;
+    public String getIssue_date() {
+        return issue_date;
+    }
 
-    Prescription (){}
+    public void setIssue_date(String issue_date) {
+        this.issue_date = issue_date;
+    }
+
+    public String getExpiry_date() {
+        return expiry_date;
+    }
+
+    public void setExpiry_date(String expiry_date) {
+        this.expiry_date = expiry_date;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    Prescription (){
+        this.active = true;
+    }
 
     public long getId() {
         return id;

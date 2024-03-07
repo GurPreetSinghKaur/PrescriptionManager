@@ -6,6 +6,9 @@ public class Drug {
     boolean liver;
     boolean pregnancy;
     boolean heart;
+    int alcohol_units;
+    int minimum_weight;
+    int minimum_age;
 
     public boolean isHeart() {
         return heart;
@@ -23,9 +26,6 @@ public class Drug {
         this.pregnancy = pregnancy;
     }
 
-    int alcohol_units;
-    int minimum_weight;
-    int minimum_age;
 
 
     public Drug (String name, int bp){

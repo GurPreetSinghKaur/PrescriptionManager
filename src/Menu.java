@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 
  class Menu {
@@ -73,6 +74,10 @@ private Menu (){}
                                             System.out.println("Drug not found, try again.");
                                             prescription.setDrug_id(manager.selectDrug(scanner.next()));
                                         }
+                                        //Set current date
+                                        LocalDate date = LocalDate.now();
+                                        prescription.setIssue_date(date.toString());
+                                        prescription.setExpiry_date(Utility.addDate("Provide an expiry date or press enter to skip it", true));
                                         System.out.println("Description:");
                                         prescription.setDescription(scanner.next());
                                         prescription.setPatientId(patient.getId());
