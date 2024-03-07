@@ -46,7 +46,6 @@ private Menu (){}
                 }   else {
                     getPatientDetails(patient);
                 }
-
                     patient =  manager.selectPatient(patient);
                         if (patient.getId() != Integer.MIN_VALUE) {
                             int innerChoice = 0;
@@ -67,9 +66,13 @@ private Menu (){}
                                         break;
 
                                     case 2: //add prescription
-
+                                        System.out.println("Make sure you have filled in the symptom form before adding a prescription");
                                         //Need to add more examples of how to double check for the right prescription
                                         Prescription prescription = new Prescription();
+                                        Symptom symptom1 =  manager.viewSymptom(patient.getId());
+
+
+
                                         Drug drug = new Drug();
                                         getDrugDetails(drug, manager);
 
@@ -78,6 +81,7 @@ private Menu (){}
 //                                        System.out.println("Drug not found, try again.");
 //                                        prescription.setDrug_id(manager.selectDrug(scanner.next()));
 //                                        }
+
                                         prescription.setDrug_id(drug.getId());
                                         //Format date & Set current date
                                         LocalDate date = LocalDate.now();
@@ -89,6 +93,12 @@ private Menu (){}
                                         System.out.println("Description:");
                                         prescription.setDescription(scanner.next());
                                         prescription.setPatientId(patient.getId());
+
+                                        //Check for any medicine that might cause an issue before submitting the prescription
+
+
+
+
                                         manager.addPrescription(prescription);
 
                                         break;
@@ -175,14 +185,11 @@ private Menu (){}
                             break;
 
                         case 2: //add new drug
-
-
                           if ( manager.addDrug(addDrug(drug)) != Integer.MIN_VALUE) {
                               System.out.println("Successfully added with ID number ->" + drug.getId());
                           } else {
                               System.out.println("There was a problem adding the drug");
                           }
-
                             break;
                         case 3:
                             String stringInput = "";
@@ -190,16 +197,12 @@ private Menu (){}
                                 if (drug.getId() != Integer.MIN_VALUE){
                                 System.out.println("Type in a new name or press enter to skip");
                                     stringInput = scanner.next();
-
                                 if(!stringInput.isEmpty()) {
-
                                     System.out.println("New name is -> " + stringInput);
-
                                     drug.setName(stringInput);
                                 } else {
                                     System.out.println("Name skipped");
                                 }
-
                                 System.out.println("Type in a new value for BP press enter to skip");
                                 int tempBP = scanner.nextInt();
 
@@ -210,9 +213,7 @@ private Menu (){}
                                         System.out.println("BP skipped");
                                     }
                               }
-
                             manager.updateDrug(drug);
-
                             break;
                         case 4: ;
                             if ( getDrugDetails(drug, manager)) {
@@ -223,24 +224,16 @@ private Menu (){}
                             } else {
                                 System.out.println(drug.getName()+ " was not deleted");
                             }}
-
                         break;
                         case 9: innerChoice = 9;
                             break ;
                     }
-
                 }
-
                 break;
             case 9: System.out.println("Quitting the program...");
             break;
-
         }
-
-
     }
-
-
 }
 private boolean getDrugDetails (Drug drug, Manager manager){
     Scanner scanner = new Scanner(System.in);
@@ -294,10 +287,8 @@ private Symptom addSymptom (Symptom symptom){
     symptom.setKidney(Utility.addString("Specify any kidney related problem. Otherwise press enter to skip"));
     symptom.setLiver(Utility.addString("Specify any liver related problem. Otherwise press enter to skip"));
     symptom.setHeart(Utility.addString("Specify any kidney related problem. Otherwise press enter to skip"));
-    symptom.setAlcohol_units(Utility.addInt("Weekly alcohol intake in units"));
+    symptom.setAlcohol_unit(Utility.addInt("Weekly alcohol intake in units"));
     symptom.setWeight(Utility.addInt("Patient weight in KG"));
-
-
 
     return symptom;
 }

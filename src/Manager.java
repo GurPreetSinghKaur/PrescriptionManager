@@ -73,7 +73,7 @@ Patient result = new Patient();
     public long addSymptom (Symptom symptom, long patientId) {
         long id = patientId;
 
-        String SQL = "INSERT INTO symptom (patient_id, bp, cold, flue, pregnancy)"
+        String SQL = "INSERT INTO symptom (patient_id, bp, cold, flue, pregnancy, kidney, liver, heart, alcohol_unit, weight)"
                 + "VALUES (?,?,?,?,?)";
 
         App app = new App();
@@ -308,5 +308,34 @@ System.out.println(sql);
         }
 if (isNotFound) {return "No Prescription found \n";};
 return  receiptContent;
+    }
+
+    public Symptom viewSymptom(long id){
+        Symptom symptom = new Symptom();
+        boolean isNotFound = true;
+        String sql = "SELECT * FROM symptom WHERE symptom.patient_id = "+id+" ORDER BY id DESC LIMIT 1;";
+        App app = new App();
+        try (Connection conn = app.connect();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                // Replace placeholders with actual data
+                isNotFound = false;
+                symptom.setKidney(resultSet.getString("kidney"));
+                symptom.setLiver(resultSet.getString("liver"));
+                symptom.setHeart(resultSet.getString("heart"));
+                symptom.setAlcohol_unit(resultSet.getInt("alcohol_unit"));
+                symptom.setWeight(resultSet.getInt("weight"));
+                symptom.setPregnancy(resultSet.getBoolean("pregnancy"));
+                symptom.setCold(resultSet.getBoolean("cold"));
+                symptom.setFlue(resultSet.getBoolean("flue"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    return symptom;
     }
 }

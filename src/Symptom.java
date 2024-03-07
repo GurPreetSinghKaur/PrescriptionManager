@@ -6,7 +6,7 @@ public class Symptom {
     String kidney;
     String liver;
     String heart;
-    int alcohol_units;
+    int alcohol_unit;
     int weight;
 
     public String getKidney() {
@@ -33,12 +33,12 @@ public class Symptom {
         this.heart = heart;
     }
 
-    public int getAlcohol_units() {
-        return alcohol_units;
+    public int getAlcohol_unit() {
+        return alcohol_unit;
     }
 
-    public void setAlcohol_units(int alcohol_units) {
-        this.alcohol_units = alcohol_units;
+    public void setAlcohol_unit(int alcohol_unit) {
+        this.alcohol_unit = alcohol_unit;
     }
 
     public int getWeight() {
