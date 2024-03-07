@@ -177,16 +177,23 @@ Patient result = new Patient();
     }
 
     public long addDrug (Drug drug) {
-        String SQL = "INSERT INTO drug (name, bp)"
-                + "VALUES (?,?)";
+        String sql = "INSERT INTO drug (kidney, liver, pregnancy, name, bp, minimum_age, alcohol_units, minimum_weight) "
+        + "VALUES (?,?,?,?,?,?,?,?)";
 
         App app = new App();
         try (Connection conn = app.connect();
-             PreparedStatement preparedStatement = conn.prepareStatement(SQL,
+             PreparedStatement preparedStatement = conn.prepareStatement(sql,
                      Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, drug.getName());
-            preparedStatement.setLong(2, drug.getBp());
+            preparedStatement.setBoolean(1, drug.isKidney());
+            preparedStatement.setBoolean(2, drug.isLiver());
+            preparedStatement.setBoolean(3, drug.isPregnancy());
+            preparedStatement.setString(4, drug.getName());
+            preparedStatement.setInt(5, drug.getBp());
+            preparedStatement.setInt(6, drug.getMinimum_age());
+            preparedStatement.setInt(7, drug.getAlcohol_units());
+            preparedStatement.setInt(8, drug.getMinimum_weight());
 
+            System.out.println(preparedStatement);
             int affectedRows = preparedStatement.executeUpdate();
             // check the affected rows
             if (affectedRows > 0) {
