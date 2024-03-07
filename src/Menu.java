@@ -26,10 +26,9 @@ private Menu (){}
         System.out.println("2 - Register a new patient");
         System.out.println("3 - View or modify drugs");
         System.out.println("4 - View or modify symptoms");
-        if (patient.getId() != Integer.MIN_VALUE) {
-        System.out.println("Patient selected with ID -> " + patient.getId()+ ", Name: " + patient.getName() + ", Surname: " + patient.getSurname());
-        }
         System.out.println("9 - Quit the program");
+        if (patient.getId() != Integer.MIN_VALUE) {
+        System.out.println("Patient selected with ID -> " + patient.getId()+ ", Name: " + patient.getName() + ", Surname: " + patient.getSurname());}
         choice = scanner.nextInt();
         switch (choice) {
             case 1: //Select a patient
@@ -76,8 +75,8 @@ private Menu (){}
 
 //                                        System.out.println("Enter the name of the drug:");
 //                                        while (prescription.getDrug_id() != Integer.MIN_VALUE) {
-//                                            System.out.println("Drug not found, try again.");
-//                                            prescription.setDrug_id(manager.selectDrug(scanner.next()));
+//                                        System.out.println("Drug not found, try again.");
+//                                        prescription.setDrug_id(manager.selectDrug(scanner.next()));
 //                                        }
                                         prescription.setDrug_id(drug.getId());
                                         //Format date & Set current date
@@ -186,7 +185,6 @@ private Menu (){}
 
                             break;
                         case 3:
-
                             String stringInput = "";
                              getDrugDetails(drug, manager);
                                 if (drug.getId() != Integer.MIN_VALUE){
@@ -217,10 +215,9 @@ private Menu (){}
 
                             break;
                         case 4: ;
-                            //maybe add double confirmation before deleting a drug such as, would you like to delete this drug > Paracetamol, ID 42? press Y to confirm or N to not;
-                          if ( getDrugDetails(drug, manager)) {
+                            if ( getDrugDetails(drug, manager)) {
                             System.out.println("Would you like to delete '" + drug.getName()+ "' with ID '" + drug.getId()+"'");
-                            System.out.println("Press Y for to delete '"+drug.getName()+ "' or N to cancel ");
+                            System.out.println("Press Y to delete '"+drug.getName()+ "' or N to cancel ");
                             if (scanner.next().equalsIgnoreCase("y")) {
                                 manager.deleteDrug(drug);
                             } else {
@@ -293,6 +290,15 @@ private Symptom addSymptom (Symptom symptom){
     tempResponse = scanner.next().toLowerCase();
     if (tempResponse.equals("y"))  symptom.setPregnancy(true);
     else if (tempResponse.equals("n"))  symptom.setPregnancy(false);
+
+    symptom.setKidney(Utility.addString("Specify any kidney related problem. Otherwise press enter to skip"));
+    symptom.setLiver(Utility.addString("Specify any liver related problem. Otherwise press enter to skip"));
+    symptom.setHeart(Utility.addString("Specify any kidney related problem. Otherwise press enter to skip"));
+    symptom.setAlcohol_units(Utility.addInt("Weekly alcohol intake in units"));
+    symptom.setWeight(Utility.addInt("Patient weight in KG"));
+
+
+
     return symptom;
 }
   private Drug addDrug(Drug drug){

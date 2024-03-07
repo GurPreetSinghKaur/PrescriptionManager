@@ -154,9 +154,9 @@ Patient result = new Patient();
         try (Connection conn = app.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, prescription.getPatientId());
-            preparedStatement.setLong(2, prescription.getDrug_id());
-            preparedStatement.setString(3, prescription.getDescription());
+            preparedStatement.setLong(1,prescription.getPatientId());
+            preparedStatement.setLong(2,prescription.getDrug_id());
+            preparedStatement.setString(3,prescription.getDescription());
             preparedStatement.setString(4,prescription.getIssue_date());
             preparedStatement.setString(5,prescription.getExpiry_date());
             preparedStatement.setBoolean(6,prescription.isActive());
