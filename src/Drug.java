@@ -4,6 +4,16 @@ public class Drug {
     long id;
     boolean kidney;
     boolean liver;
+    boolean pregnancy;
+
+    public boolean isPregnancy() {
+        return pregnancy;
+    }
+
+    public void setPregnancy(boolean pregnancy) {
+        this.pregnancy = pregnancy;
+    }
+
     int alcohol_units;
     int minimum_weight;
     int minimum_age;

@@ -146,7 +146,7 @@ private Menu (){}
                     getPatientDetails(patient);
                   patient =  manager.insertPatient(patient);
                 break;
-            case 3:
+            case 3: //View or modify drug
                 int innerChoice = 0;
                 while (innerChoice != 9) {
                     System.out.println("1 - View all drugs");
@@ -286,8 +286,18 @@ private Symptom addSymptom (Symptom symptom){
         System.out.println("Answer the following questions:");
         System.out.println("Drug name");
         drug.setName(scanner.next());
-        drug.setBp(Utility.addInt("BP requirement? Minimum BP e.g. 58"));
- return drug;
+        drug.setBp(Utility.addInt("BP requirement? Minimum BP e.g. 58, otherwise type in 0"));
+        System.out.println("Suitable for patient with kidney problems? Type in 'Y' or 'N' ");
+        drug.setKidney(!scanner.next().equalsIgnoreCase("y"));
+        System.out.println("Suitable for patient with liver problems? Type in 'Y' or 'N' ");
+        drug.setLiver(!scanner.next().equalsIgnoreCase("y"));
+        drug.setAlcohol_units(Utility.addInt("Suitability for maximum amount of alcohol recommended in units per week.\ne.g. type in '15' for 15 units a week. or type in 0 "));
+        drug.setMinimum_age(Utility.addInt("Minimum recommended patient age. Otherwise type in 0"));
+        drug.setMinimum_weight(Utility.addInt("Minimum recommended patient weight. Otherwise type in 0"));
+        System.out.println("Suitable for pregnant patient? Type in 'Y' or 'N'");
+        drug.setPregnancy(!scanner.next().equalsIgnoreCase("y"));
+
+      return drug;
     }
 
 
