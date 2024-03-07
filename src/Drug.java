@@ -2,6 +2,12 @@ public class Drug {
     String name;
     int bp;
     long id;
+    boolean kidney;
+    boolean liver;
+    int alcohol_units;
+    int minimum_weight;
+    int minimum_age;
+
 
     public Drug (String name, int bp){
         this.id = Integer.MIN_VALUE;
@@ -32,4 +38,43 @@ public class Drug {
         return bp;
     }
 
+    public boolean isKidney() {
+        return kidney;
+    }
+
+    public void setKidney(boolean kidney) {
+        this.kidney = kidney;
+    }
+
+    public boolean isLiver() {
+        return liver;
+    }
+
+    public void setLiver(boolean liver) {
+        this.liver = liver;
+    }
+
+    public int getAlcohol_units() {
+        return alcohol_units;
+    }
+
+    public void setAlcohol_units(int alcohol_units) {
+        this.alcohol_units = alcohol_units;
+    }
+
+    public int getMinimum_weight() {
+        return minimum_weight;
+    }
+
+    public void setMinimum_weight(int minimum_weight) {
+        this.minimum_weight = minimum_weight;
+    }
+
+    public int getMinimum_age() {
+        return minimum_age;
+    }
+
+    public void setMinimum_age(int minimum_age) {
+        this.minimum_age = minimum_age;
+    }
 }

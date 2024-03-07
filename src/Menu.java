@@ -26,11 +26,7 @@ private Menu (){}
         System.out.println("4 - View or modify symptoms");
         if (patient.getId() != Integer.MIN_VALUE) {
         System.out.println("Patient selected with ID -> " + patient.getId()+ ", Name: " + patient.getName() + ", Surname: " + patient.getSurname());
-        System.out.println();
-
         }
-
-
         System.out.println("9 - Quit the program");
         choice = scanner.nextInt();
         switch (choice) {
@@ -69,6 +65,8 @@ private Menu (){}
                                         break;
 
                                     case 2: //add prescription
+
+                                        //Need to add more examples of how to double check for the right prescription
                                         Prescription prescription = new Prescription();
                                         System.out.println("Enter the name of the drug:");
                                         while (prescription.getDrug_id() != Integer.MIN_VALUE) {
