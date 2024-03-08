@@ -74,7 +74,7 @@ Patient result = new Patient();
         long id = patientId;
 
         String SQL = "INSERT INTO symptom (patient_id, bp, cold, flue, pregnancy, kidney, liver, heart, alcohol_unit, weight)"
-                + "VALUES (?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         App app = new App();
         try (Connection conn = app.connect();
@@ -85,6 +85,12 @@ Patient result = new Patient();
             preparedStatement.setBoolean(3, symptom.isCold());
             preparedStatement.setBoolean(4, symptom.isFlue());
             preparedStatement.setBoolean(5, symptom.isPregnancy());
+            preparedStatement.setString(6, symptom.getKidney());
+            preparedStatement.setString(7, symptom.getLiver());
+            preparedStatement.setString(8, symptom.getHeart());
+            preparedStatement.setInt(9, symptom.getAlcohol_unit());
+            preparedStatement.setInt(10, symptom.getWeight());
+
             int affectedRows = preparedStatement.executeUpdate();
             // check the affected rows
             if (affectedRows > 0) {
@@ -313,7 +319,7 @@ return  receiptContent;
     public Symptom viewSymptom(long id){
         Symptom symptom = new Symptom();
         boolean isNotFound = true;
-        String sql = "SELECT * FROM symptom WHERE symptom.patient_id = "+id+" ORDER BY id DESC LIMIT 1;";
+        String sql = "SELECT * FROM symptom WHERE symptom.patient_id = ? ORDER BY id DESC LIMIT 1;";
         App app = new App();
         try (Connection conn = app.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
