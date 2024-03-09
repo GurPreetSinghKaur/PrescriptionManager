@@ -71,10 +71,9 @@ private Menu (){}
                                         Prescription prescription = new Prescription();
                                         Symptom symptom1 =  manager.viewSymptom(patient.getId());
 
-
-
                                         Drug drug = new Drug();
                                         getDrugDetails(drug, manager);
+                                        manager.viewDrug(drug);
 
 //                                        System.out.println("Enter the name of the drug:");
 //                                        while (prescription.getDrug_id() != Integer.MIN_VALUE) {
@@ -106,7 +105,7 @@ private Menu (){}
                                         if (!symptom1.getLiver().isEmpty() && drug.isLiver()) System.out.println("Patient is pregnant and " +drug.getName() + " might not be suitable");
                                         //Prescription is ready, double check again
                                         System.out.println("Prescription is ready, would you like to submit it ? Type in 'Y' to confirm or 'N' to cancel");
-                                        if (scanner.next().equalsIgnoreCase("y"))   manager.addPrescription(prescription);
+                                        if (scanner.next().equalsIgnoreCase("y")) manager.addPrescription(prescription);
                                         else {System.out.println("Prescription was not added ");}
 
 
@@ -201,7 +200,7 @@ private Menu (){}
                           }
                             break;
                         case 3:
-                            String stringInput = "";
+                            String stringInput;
                              getDrugDetails(drug, manager);
                                 if (drug.getId() != Integer.MIN_VALUE){
                                 System.out.println("Type in a new name or press enter to skip");
