@@ -130,7 +130,35 @@ Patient result = new Patient();
         }
         return id;
     }
-    public void viewAllDrug () {
+    public Drug viewDrug(long id) //Need another method to get drug information ?
+     {
+         Drug drug = new Drug();
+         String sql = "SELECT * FROM drug WHERE id = ?";
+         App app = new App();
+         //Create a prepared statement
+         try (Connection conn = app.connect();
+          PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+             preparedStatement.setLong(1,id);
+             ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+           drug.setBp(resultSet.getInt("bp"));
+           drug.setAlcohol_units(resultSet.getInt("alcohol_units"));
+           drug.setMinimum_weight(resultSet.getInt("minimum_units"));
+           drug.setMinimum_age(resultSet.getInt("minimum_age"));
+           drug.setKidney(resultSet.getBoolean("kidney"));
+           drug.setLiver(resultSet.getBoolean("liver"));
+           drug.setPregnancy(resultSet.getBoolean("pregnancy"));
+           drug.setHeart(resultSet.getBoolean("heart"));
+            }
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+
+
+         return drug;
+     }
+    public void viewAllDrug() {
         String SQL_SELECT = "SELECT * FROM drug";
 
         App app = new App();
@@ -265,7 +293,7 @@ Patient result = new Patient();
         if (!drug.getName().isEmpty()) {sql += "name = '" + drug.getName()+ "' ";}
         if (drug.getBp() != 0) {sql += ", bp = " + drug.getBp();}
 
-        sql += " WHERE id = ?";;
+        sql += " WHERE id = ?";
 
         int affectedRows = 0;
         App app = new App();
@@ -333,11 +361,9 @@ return  receiptContent;
         String sql = "SELECT * FROM symptom WHERE symptom.patient_id = ? ORDER BY id DESC LIMIT 1;";
         App app = new App();
         try (Connection conn = app.connect();
-             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next()) {
                 // Replace placeholders with actual data
                 symptom.setKidney(resultSet.getString("kidney"));
