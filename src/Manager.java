@@ -139,21 +139,20 @@ Patient result = new Patient();
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-            System.out.println("\nID - "+resultSet.getString("id"));
-            System.out.println("NAME - "+resultSet.getString("name") + " ");
-            System.out.println("May not be suitable for patients that have problems with:");
+            System.out.print("NAME - "+resultSet.getString("name") + ", ");
+            System.out.print("DRUG ID - "+resultSet.getString("id"));
+            System.out.println("\nMay not be suitable for patients that have problems with:");
 
-            System.out.print(((resultSet.getInt("BP") > 130) ? "High Blood Pressure ("+resultSet.getInt("BP")+")" :""));
-            System.out.print(((resultSet.getBoolean("kidney")) ? ",Kidney" :"")) ;
-            System.out.print(((resultSet.getBoolean("liver")) ? ",Liver" :""));
-            System.out.print(((resultSet.getBoolean("heart")) ? ",Heart" :""));
+            System.out.print(((resultSet.getInt("BP") > 130) ? "- High BP ("+resultSet.getInt("BP")+")" :""));
+            System.out.print(((resultSet.getBoolean("kidney")) ? "- Kidney" :"")) ;
+            System.out.print(((resultSet.getBoolean("liver")) ? " - Liver" :""));
+            System.out.print(((resultSet.getBoolean("heart")) ? " - Heart" :""));
 
 
             System.out.println("\nALCOHOL - "+ ((resultSet.getInt("alcohol_units") != 0) ? resultSet.getInt("alcohol_units") +" UNITS PER WEEK" : "N/A"));
-                  //  resultSet.getString("alcohol_units") + " ");
-            System.out.println("MINIMUM RECOMMENDED WEIGHT - "+resultSet.getString("minimum_weight") + "KG");
-            System.out.println("MINIMUM RECOMMENDED AGE - "+resultSet.getString("minimum_age") + " \n");
-            System.out.println("PREGNANCY - "+resultSet.getBoolean("pregnancy") + " ");
+            System.out.println("MINIMUM RECOMMENDED WEIGHT - "+ ((resultSet.getInt("minimum_weight") > 0) ? resultSet.getInt("minimum_weight") +" KG" : "N/A"));
+            System.out.println("MINIMUM RECOMMENDED AGE - "+ ((resultSet.getInt("minimum_age") > 0) ? resultSet.getInt("minimum_age") +" Years" : "N/A"));
+            System.out.println("SUITABLE FOR PREGNANT - "+ ((resultSet.getBoolean("pregnancy")) ? "Yes": "No"));
 
             }
         } catch (SQLException e) {
@@ -331,7 +330,6 @@ return  receiptContent;
 
     public Symptom viewSymptom(long id){
         Symptom symptom = new Symptom();
-        boolean isNotFound = true;
         String sql = "SELECT * FROM symptom WHERE symptom.patient_id = ? ORDER BY id DESC LIMIT 1;";
         App app = new App();
         try (Connection conn = app.connect();
@@ -342,7 +340,6 @@ return  receiptContent;
 
             while (resultSet.next()) {
                 // Replace placeholders with actual data
-                isNotFound = false;
                 symptom.setKidney(resultSet.getString("kidney"));
                 symptom.setLiver(resultSet.getString("liver"));
                 symptom.setHeart(resultSet.getString("heart"));
