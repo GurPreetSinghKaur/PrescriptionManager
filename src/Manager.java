@@ -140,8 +140,17 @@ Patient result = new Patient();
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-            System.out.print("ID -> "+resultSet.getString("id"));
-            System.out.println(", NAME -> "+resultSet.getString("name") + " ");
+            System.out.println("\nID - "+resultSet.getString("id"));
+            System.out.println("NAME - "+resultSet.getString("name") + " ");
+            System.out.println("BP - "+resultSet.getInt("bp") + " ");
+            System.out.println("PREGNANCY - "+resultSet.getBoolean("pregnancy") + " ");
+            System.out.println("KIDNEY - "+resultSet.getString("kidney") + " ");
+            System.out.println("LIVER - "+resultSet.getString("liver") + " ");
+            System.out.println("HEART - "+resultSet.getString("heart") + " ");
+            System.out.println("ALCOHOL UNITS PER WEEK - "+resultSet.getString("alcohol_units") + " ");
+            System.out.println("MINIMUM RECOMMENDED WEIGHT - "+resultSet.getString("minimum_weight") + "KG");
+            System.out.println("MINIMUM RECOMMENDED AGE - "+resultSet.getString("minimum_age") + " \n");
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
