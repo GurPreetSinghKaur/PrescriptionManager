@@ -94,11 +94,11 @@ private Menu (){}
                                         prescription.setDescription(scanner.next());
                                         prescription.setPatientId(patient.getId());
 
-//need to fix when the database hold record with 0;
+//need to fix when the database hold record with 0 / null values ;
                                         //Check for any medicine that might cause an issue before submitting the prescription
-                                        if (symptom1.getBp() > drug.getBp())  System.out.println("Patient's blood pressure is "+symptom1.getBp()+" and "+drug.getName()+" may not be suitable \n");
-                                        if (symptom1.getWeight() < drug.getMinimum_weight()) System.out.println("Patient's weight is" + symptom1.getWeight() + "kg." + drug.getName() + " may not be suitable ("+drug.getMinimum_weight()+") \n");
-                                        if (symptom1.getAlcohol_unit() > drug.getAlcohol_units() ) System.out.println("Patient consumes more alcohol than recommended ("+symptom1.getAlcohol_unit()+" units per week), "+ drug.getName() + " may not be suitable ("+drug.getAlcohol_units()+"\n");
+                                        if (symptom1.getBp() != 0 && symptom1.getBp() > drug.getBp())  System.out.println("Patient's blood pressure is "+symptom1.getBp()+" and "+drug.getName()+" may not be suitable \n");
+                                        if (symptom1.getWeight() != 0 && symptom1.getWeight() < drug.getMinimum_weight()) System.out.println("Patient's weight is" + symptom1.getWeight() + "kg." + drug.getName() + " may not be suitable ("+drug.getMinimum_weight()+") \n");
+                                        if (symptom1.getAlcohol_unit() != 0 && symptom1.getAlcohol_unit() > drug.getAlcohol_units() ) System.out.println("Patient consumes more alcohol than recommended ("+symptom1.getAlcohol_unit() +" units per week), "+ drug.getName() + " may not be suitable ("+drug.getAlcohol_units()+"\n");
 //                                        Use Optional
 //                                        if (symptom1.getHeart().length() > 1 && drug.isHeart()) System.out.println("Patient might have heart problem: "+ symptom1.getHeart());
 //                                        if (symptom1.getKidney().length() > 1 && drug.isKidney()) System.out.println("Patient might have kidney problem: "+ symptom1.getKidney());
