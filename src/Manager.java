@@ -331,7 +331,7 @@ System.out.println(sql);
     public String viewPrescription (String template, Long id) {
         String receiptContent ="";
         boolean isNotFound = true;
-        String SQL_SELECT = "SELECT patient.name, patient.id, prescription.description, patient.age, drug.name AS drugname, drug.bp FROM patient INNER JOIN prescription ON patient.id = prescription.patient_id INNER JOIN drug ON drug.id = prescription.drug_id WHERE patient.id = ?";
+        String SQL_SELECT = "SELECT patient.name, patient.id, prescription.description, prescription.expiry_date, prescription.issue_date, patient.age, drug.name AS drugname, drug.bp FROM patient INNER JOIN prescription ON patient.id = prescription.patient_id INNER JOIN drug ON drug.id = prescription.drug_id WHERE patient.id = ?";
 
         App app = new App();
         try (Connection conn = app.connect();
@@ -344,8 +344,8 @@ System.out.println(sql);
                 // Replace placeholders with actual data
 
                 isNotFound = false;
-                 receiptContent = String.format(template, resultSet.getString("name"), "Charles", "12/01/2024",
-                        resultSet.getString("drugname"), 33, 2.1, 4.1);
+                 receiptContent = String.format(template, resultSet.getString("name"), "Doctor", resultSet.getString("issue_date"), resultSet.getString("expiry_date"),
+                        resultSet.getString("drugname"), resultSet.getString("description"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

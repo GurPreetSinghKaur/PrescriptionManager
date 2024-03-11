@@ -106,7 +106,7 @@ private Menu (){}
                                         //Prescription is ready, double check again
                                         System.out.println("Prescription is ready, would you like to submit it ? Type in 'Y' to confirm or 'N' to cancel");
                                         if (scanner.next().equalsIgnoreCase("y")) manager.addPrescription(prescription);
-                                        else {System.out.println("Prescription was not added ");}
+                                        else {System.out.println("Prescription was not added");}
 
 
                                         break;
@@ -158,11 +158,12 @@ private Menu (){}
                                                 "Patient: %s\n" +
                                                 "Doctor: %s\n" +
                                                 "Date: %s\n" +
+                                                "Expiry Date: %s\n" +
                                                 "---------------------------------\n" +
                                                 "Symptom: %s\n" +
-                                                "Quantity: %d\n" +
-                                                "Price per unit: £%.2f\n" +
-                                                "Total Amount: £%.2f\n" +
+                                              //  "Quantity: %d\n" +
+                                             //   "Price per unit: £%.2f\n" +
+                                             //   "Total Amount: £%.2f\n" +
                                                 "Instructions on how to take medication: " +
                                                 "---------------------------------\n";
                                         System.out.print(manager.viewPrescription(template, patient.getId()) );
