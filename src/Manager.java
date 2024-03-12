@@ -1,7 +1,5 @@
 import java.sql.*;
 
-import static javax.management.remote.JMXConnectorFactory.connect;
-
 public class Manager {
 
     public Patient insertPatient (Patient patient) {
