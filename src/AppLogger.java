@@ -7,9 +7,7 @@ import java.util.logging.SimpleFormatter;
 public class AppLogger {
    // private final static Logger logger = Logger.getLogger(AppLogger.class.getName());
     private static FileHandler fh = null;
-    static {
-        init();
-    }
+
     public static void init(){
         try {
             fh = new FileHandler("logger.log", true);

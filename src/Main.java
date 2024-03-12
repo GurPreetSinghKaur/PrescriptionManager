@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         AppLogger.init();
         logger.log(Level.INFO,"The application has been started");
-
         Menu menu = Menu.getMenu();
         menu.start();
     }
