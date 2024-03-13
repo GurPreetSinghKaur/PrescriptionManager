@@ -1,10 +1,14 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
- class Menu {
+class Menu {
      static Menu menu = new Menu();
-private Menu (){}
+     private final static Logger logger = Logger.getLogger(Logger.class.getName());
+
+    private Menu (){}
 
      public static Menu getMenu() {
          return menu;
@@ -240,6 +244,7 @@ private Menu (){}
                 }
                 break;
             case 9: System.out.println("Quitting the program...");
+                logger.log(Level.INFO,"The application has been quit successfully");
             break;
         }
     }
