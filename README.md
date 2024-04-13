@@ -6,10 +6,9 @@ This application allows to store, retrieve, and update details such as prescript
 ## Table of Contents
 1. [Technologies](#technologies)
 2. [Features](#features)
-3. [Screenshots](#screenshots)
 3. [Project Structure](#project-structure)
-5. [License](#license)
-6. [Contact](#contact)
+4. [License](#license)
+5. [Contact](#contact)
 
 ## Technologies
 This project is built using the following technologies:
