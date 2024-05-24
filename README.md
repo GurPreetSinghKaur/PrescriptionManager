@@ -22,7 +22,7 @@ This project is built using the following technologies:
 *  Drug Database: Maintain an up-to-date database of medications, including generic and brand names. Provide drug information such as usage instructions, side effects, contraindications, and precautions based on the patient. Ability to easily integrate with external drug databases for regular updates to provide comprehensive coverage.
 
 ## Project Structure
-- `PrescriptionManager/src/`: Contains test files for Java and JavaScript
+- `PrescriptionManager/src/`: Contains Java files.
  
 ## License
 
